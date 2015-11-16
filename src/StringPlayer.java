@@ -24,26 +24,28 @@ public class StringPlayer {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		/*String str1="My House is small";//"axy";//turtle";
-		String str2="My car is small";//"boo";//"tletur";
+		String str1="turltea";//My House is small";//"axy";//turtle";
+		String str2="tletaur"; //"My car is small";//"boo";//"tletur";
 		
 		System.out.println("Isomorphic? "+ isIsomorphic(str1,str2));
-		System.out.println(strStr(str1,"House"));
-		System.out.println(justify(str2,25));*/
+        System.out.println("Isomorphic2? "+ isIsomorphic2(str1, str2));
+		//System.out.println(strStr(str1,"House"));
+		//System.out.println(justify(str2,25));
 
-        /*String s="123002410242";
+       /* String s="12301241242";
 		try {
             System.out.println(s);
-            moveZero2End(s.toCharArray());//lookAndSay(s,7);
+           // moveZero2End(s.toCharArray());
+            lookAndSay(s,7);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 		String str="helloworl";
 
-		System.out.println(reverserString(str));
-
+    	System.out.println(reverserString(str));
+*/
 	}
 /*check if a string is a number
  * cases: 
@@ -96,7 +98,7 @@ public class StringPlayer {
 		
 		
 	}
-	
+	//O(n) not right
 	public static boolean isIsomorphic(String str1,String str2){
 		if(str1==null && str2!=null || str2==null && str2!=null)
 		    return false;
@@ -116,6 +118,39 @@ public class StringPlayer {
 		}
 		return true;
 	}
+
+    public static boolean isIsomorphic2(String str1,String str2){
+        if(str1==null && str2!=null || str2==null && str2!=null)
+            return false;
+        if(str1.length() != str2.length())
+            return false;
+
+        Map<Character,Integer> map1 = new HashMap<Character,Integer>();
+        Map<Character,Integer> map2 = new HashMap<Character,Integer>();
+
+        for(int i=0;i<str1.length();i++){
+
+            Integer c1 = map1.get(str1.charAt(i));
+            if( c1 == null){
+                map1.put(str1.charAt(i), 1);
+            }else {
+                map1.put(str1.charAt(i), c1+1);
+            }
+            Integer c2 = map2.get(str2.charAt(i));
+            if( c2 == null){
+                map2.put(str2.charAt(i), 1);
+            }else {
+                map2.put(str2.charAt(i), c2+1);
+            }
+
+        }
+
+        for(int i=0;i<str1.length();i++){
+            if(map1.get(str1.charAt(i)) != map2.get(str1.charAt(i)))
+                return false;
+        }
+        return true;
+    }
 	
 	public static String strStr(String str1, String str2){
 		int l1=str1.length();

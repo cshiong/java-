@@ -367,7 +367,7 @@ public class arrayPlayer {
 
         for ( int i = 0; i < num.length; i++){
 
-            int index = num[i]>0? num[i] - 1:Math.abs(num[i]);
+            int index = num[i]>0? num[i] - 1: Math.abs(num[i]);
             int val = num[index];
             if( val > 0 )
                 num[index] = -(val-1);
